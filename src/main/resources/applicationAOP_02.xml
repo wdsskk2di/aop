@@ -6,6 +6,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 <aop:aspectj-autoproxy/>
+<bean id="common" class="com.care.aop_ex02.CommonClass"/>
 <bean id="core" class="com.care.aop_ex02.CoreClass"/>
 
 </beans>
