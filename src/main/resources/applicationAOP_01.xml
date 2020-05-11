@@ -5,15 +5,25 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
-<bean id="common" class="com.care.controller.CommonClass"/>
+<bean class="com.care.controller.CommonClass" id="common"/>
 
+<!-- 
 <aop:config>
-	<aop:aspect id="comService" ref="common">
-		<aop:pointcut id="comSerImpl" expression="within(com.care.controller.CoreClass)"/>
-		<aop:around method="commonAop" pointcut-ref="comSerImpl"/>
-	</aop:aspect>
+<aop:aspect id="comService" ref="common"> 공통 기능으로 무엇을 추가할 것인가? common 
+	<aop:pointcut id="comSerImpl" expression="within(com.care.controller.CoreClass)"/> 어느 시점에 실행할 것인가? CoreClass  
+	<aop:around method="commonAOP" pointcut-ref="comSerImpl"/>	 - method="commonAOP"는 CommonClass.java의 commonAOP메소드. 이름이 같아야 가져올 수 있으므로 주의  ..  이 메소드 실행  
+	  around: CoreClass 시작전, 종료후 해당 메소드(commonAOP) 실행  
+</aop:aspect>
 </aop:config>
-
-<bean id="core" class="com.care.controller.CoreClass"/>
+ -->
+ 
+<aop:config>
+<aop:aspect id="comService" ref="common">
+	<aop:pointcut id="comSerImpl" expression="within(com.care.controller.CoreClass)"/>
+	<aop:before method="beforeAdvice" pointcut-ref="comSerImpl"/>	<!-- before: CoreClass 시작전 해당 메소드(beforeAdvice) 실행 -->
+</aop:aspect>
+</aop:config>
+ 
+<bean class="com.care.controller.CoreClass" id="core"/>
 
 </beans>

@@ -1,6 +1,6 @@
 package com.care.controller;
 
-public class CoreClass {//이미 만든 프로그램
+public class CoreClass {//이미 만든 프로그램 역할
 	public void corePrint() {
 		for(int i=0; i<10 ;i++) {
 			try {
@@ -11,4 +11,5 @@ public class CoreClass {//이미 만든 프로그램
 			}
 		}
 	}
+
 }
